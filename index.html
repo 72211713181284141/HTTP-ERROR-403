@@ -163,28 +163,24 @@
 </div>
 
 <script>
-    // Predefined credentials
+    // Predefined credentials 
     const validUsername = "alexleighton97@gmail.com";
     const validPassword = "CFWC";
 
    /* Login Button */
     function submitLogin() {
-        let username = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
+        let username = document.getElementById("username").value.trim().toLowerCase();
+        let password = document.getElementById("password").value.trim();
         let errorMessage = document.getElementById("error-message");
 
-    /* Redirect Players to the Real Drive */
-        if (username === validUsername && password === validPassword) {
+        /* Redirect Players to the Real Drive */
+        if (username === validUsername.toLowerCase() && password.toLowerCase() === validPassword.toLowerCase()) {
             alert("Login Successful. Page Will Reload.");
-               window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing"
+            window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
             closeModal();
         } else {
             errorMessage.style.display = "block";
         }
-    }
-
-    function closeModal() {
-        document.getElementById("loginModal").style.display = "none";
     }
 </script>
 
