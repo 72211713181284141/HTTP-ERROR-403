@@ -137,54 +137,88 @@
     <p id="error-message" style="color: red; display: none;">Invalid Username or Password. Try Again.</p>
   </div>
 
-  <script>
-    // Predefined valid credentials.
-    const validUsername = "alexleighton97@gmail.com";
-    const validPassword = "ih9u8p7za";
-
-    // Triggered when the Login button is clicked.
-    function submitLogin() {
-      let username = document.getElementById("username").value.trim().toLowerCase();
-      let password = document.getElementById("password").value.trim();
-      let errorMessage = document.getElementById("error-message");
-
-      if (username === validUsername.toLowerCase() && password.toLowerCase() === validPassword.toLowerCase()) {
-        // Retrieve the stored email from localStorage.
-        let storedEmail = localStorage.getItem("playerEmail");
-
-        if (storedEmail) {
-          // Google Apps Script URL for stage 2 trigger (update with your own URL).
-          let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
-          // Trigger stage 2 update by calling the web app with trigger=googleDrive.
-          fetch(scriptURL + "?email=" + encodeURIComponent(storedEmail) + "&trigger=googleDrive", {
-            mode: "no-cors" // Use no-cors mode if necessary.
-          })
-          .then(response => {
-            // After the trigger, redirect the player.
-            window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
-          })
-          .catch(error => {
-            console.error("Error:", error);
-            // Even if the trigger fails, proceed to redirect.
-            window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
-          });
-        } else {
-          // If no stored email is found, just redirect.
+<script>
+  // Predefined valid credentials
+  const validUsername = "alexleighton97@gmail.com";
+  const validPassword = "ih9u8p7za";
+  
+  // Run when the page loads to set up tracking
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get player ID from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const playerId = urlParams.get('pid');
+    
+    // If player ID is in URL, store it in localStorage as backup
+    if (playerId) {
+      localStorage.setItem("argPlayerId", playerId);
+    }
+  });
+  
+  // Triggered when the Login button is clicked
+  function submitLogin() {
+    let username = document.getElementById("username").value.trim().toLowerCase();
+    let password = document.getElementById("password").value.trim();
+    let errorMessage = document.getElementById("error-message");
+    
+    if (username === validUsername.toLowerCase() && password.toLowerCase() === validPassword.toLowerCase()) {
+      // Get player ID from URL parameters or localStorage
+      const urlParams = new URLSearchParams(window.location.search);
+      const playerId = urlParams.get('pid') || localStorage.getItem("argPlayerId");
+      
+      // Fallback to email if no player ID is found
+      const storedEmail = localStorage.getItem("playerEmail");
+      
+      // Google Apps Script URL
+      let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
+      
+      // Check if we have a player ID
+      if (playerId) {
+        // Use player ID for tracking (preferred method)
+        fetch(scriptURL + "?pid=" + encodeURIComponent(playerId) + "&trigger=googleDrive", {
+          mode: "no-cors"
+        })
+        .then(response => {
+          // After the trigger, redirect the player
           window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
-        }
-        closeModal();
-      } else {
-        errorMessage.style.display = "block";
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          // Even if the trigger fails, proceed to redirect
+          window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
+        });
+      } 
+      // Fallback to email if no player ID but we have email
+      else if (storedEmail) {
+        fetch(scriptURL + "?email=" + encodeURIComponent(storedEmail) + "&trigger=googleDrive", {
+          mode: "no-cors"
+        })
+        .then(response => {
+          window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
+        });
+      } 
+      // Last resort - just redirect without tracking
+      else {
+        console.log("No player identification found");
+        window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
       }
+      
+      closeModal();
+    } else {
+      errorMessage.style.display = "block";
     }
-
-    function showLoginModal() {
-      document.getElementById("loginModal").style.display = "block";
-    }
-
-    function closeModal() {
-      document.getElementById("loginModal").style.display = "none";
-    }
-  </script>
+  }
+  
+  function showLoginModal() {
+    document.getElementById("loginModal").style.display = "block";
+  }
+  
+  function closeModal() {
+    document.getElementById("loginModal").style.display = "none";
+  }
+</script>
 </body>
 </html>
