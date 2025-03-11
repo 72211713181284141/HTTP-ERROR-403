@@ -1,158 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-83JZK8QS5Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-83JZK8QS5Y');
-</script>
-
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>403 Forbidden</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: "Roboto", sans-serif;
-            background-color: #fff;
-            color: #000;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            height: 100vh;
-        }
-
-        .error-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-      
-        
-        /* Frownie Face Google Page */
-        .error-image {  
-            width: 30px;
-            margin-bottom: 10px;
-        }
-        /* Text: Access to Doc was Denied */
-        .error-message {
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-        /* Text: You Don't Have Authorization */
-        .error-description {
-            font-size: 14px;
-            font-weight: 400;
-            color: #5f6368;
-            margin-bottom: 8px;
-        }
-       /* Text: HTTP ERROR 403 */
-        .http-error {
-            font-size: 12px; 
-            font-weight: 400;
-            color: #5f6368;
-            margin-bottom: 16px;
-        }
-
-        /* Reload Button */
-        .reload-button {
-            background-color: #1a73e8;
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .reload-button:hover {
-            background-color: #1558b0;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none; /* Hides modal until Reload is clicked */
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 40px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            width: 300px;
-        }
-
-        .modal input {
-            width: 100%;
-           
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 2px;
-        }
-
-      
-     
-        .modal button {
-            width: 20%;
-            background-color: #1a73e8;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            margin-top: 5px;
-            border-radius: 4px;
-        }
-
-        .modal button:hover {
-            background-color: #1558b0;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 16px;
-            width: 2px;
-            color: red;
-            cursor: pointer;
-            float: right;
-            padding: 2px;
-        }
-    </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-83JZK8QS5Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-83JZK8QS5Y');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>403 Forbidden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #fff;
+      color: #000;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      height: 100vh;
+    }
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .error-image {  
+      width: 30px;
+      margin-bottom: 10px;
+    }
+    .error-message {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .error-description {
+      font-size: 14px;
+      font-weight: 400;
+      color: #5f6368;
+      margin-bottom: 8px;
+    }
+    .http-error {
+      font-size: 12px; 
+      font-weight: 400;
+      color: #5f6368;
+      margin-bottom: 16px;
+    }
+    .reload-button {
+      background-color: #1a73e8;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      text-align: center;
+      display: inline-block;
+    }
+    .reload-button:hover {
+      background-color: #1558b0;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 40px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      width: 300px;
+    }
+    .modal input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+    }
+    .modal button {
+      width: 20%;
+      background-color: #1a73e8;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      margin-top: 5px;
+      border-radius: 4px;
+    }
+    .modal button:hover {
+      background-color: #1558b0;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 16px;
+      width: 2px;
+      color: red;
+      cursor: pointer;
+      float: right;
+      padding: 2px;
+    }
+  </style>
 </head>
 <body>
-    <div class="error-container">
-        <!-- Uploaded image -->
-        <img src="error.png" alt="Error Icon" class="error-image">
+  <div class="error-container">
+    <!-- Uploaded image -->
+    <img src="error.png" alt="Error Icon" class="error-image">
+    <p class="error-message">Access to https://drive.google.com/drive/u/2/folders/Alex_Personal was denied</p>
+    <p class="error-description">You don't have authorization to view this page.</p>
+    <p class="http-error">HTTP ERROR 403</p>
+    <!-- Reload Button -->
+    <button class="reload-button" onclick="showLoginModal()">Reload</button>
+  </div>
 
-        <p class="error-message">Access to https://drive.google.com/drive/u/2/folders/Alex_Personal was denied</p>
-        <p class="error-description">You don't have authorization to view this page.</p>
-        <p class="http-error">HTTP ERROR 403</p>
-
-        <!-- Reload Button -->
-        <button class="reload-button" onclick="showLoginModal()">Reload</button>
-    </div>
-
-<!-- Authentication Block (Hidden by Default) -->
-<div class="modal" id="loginModal">
+  <!-- Authentication Modal (Hidden by Default) -->
+  <div class="modal" id="loginModal">
     <button class="modal-close" onclick="closeModal()">✖</button>
     <h3>Authentication Required</h3>
     <p>Enter your credentials to continue.</p>
@@ -160,40 +135,56 @@
     <input type="password" id="password" placeholder="Password">
     <button onclick="submitLogin()">Login</button>
     <p id="error-message" style="color: red; display: none;">Invalid Username or Password. Try Again.</p>
-</div>
+  </div>
 
-<script>
-    // Predefined credentials 
+  <script>
+    // Predefined valid credentials.
     const validUsername = "alexleighton97@gmail.com";
     const validPassword = "ih9u8p7za";
 
-   /* Login Button */
+    // Triggered when the Login button is clicked.
     function submitLogin() {
-        let username = document.getElementById("username").value.trim().toLowerCase();
-        let password = document.getElementById("password").value.trim();
-        let errorMessage = document.getElementById("error-message");
+      let username = document.getElementById("username").value.trim().toLowerCase();
+      let password = document.getElementById("password").value.trim();
+      let errorMessage = document.getElementById("error-message");
 
-        /* Redirect Players to the Real Drive */
-        if (username === validUsername.toLowerCase() && password.toLowerCase() === validPassword.toLowerCase()) {
-            alert("Login Successful. Page Will Reload.");
+      if (username === validUsername.toLowerCase() && password.toLowerCase() === validPassword.toLowerCase()) {
+        // Retrieve the stored email from localStorage.
+        let storedEmail = localStorage.getItem("playerEmail");
+
+        if (storedEmail) {
+          // Google Apps Script URL for stage 2 trigger (update with your own URL).
+          let scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
+          // Trigger stage 2 update by calling the web app with trigger=googleDrive.
+          fetch(scriptURL + "?email=" + encodeURIComponent(storedEmail) + "&trigger=googleDrive", {
+            mode: "no-cors" // Use no-cors mode if necessary.
+          })
+          .then(response => {
+            // After the trigger, redirect the player.
             window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
-            closeModal();
+          })
+          .catch(error => {
+            console.error("Error:", error);
+            // Even if the trigger fails, proceed to redirect.
+            window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
+          });
         } else {
-            errorMessage.style.display = "block";
+          // If no stored email is found, just redirect.
+          window.location.href = "https://drive.google.com/drive/folders/1F5EMhdPu1QXwjTOi9sqS0aWHlUGMmgay?usp=sharing";
         }
+        closeModal();
+      } else {
+        errorMessage.style.display = "block";
+      }
     }
-</script>
 
-    <script>
-        function showLoginModal() {
-            document.getElementById("loginModal").style.display = "block";
-        }
+    function showLoginModal() {
+      document.getElementById("loginModal").style.display = "block";
+    }
 
-        function closeModal() {
-            document.getElementById("loginModal").style.display = "none";
-        }
-
-     
-    </script>
+    function closeModal() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+  </script>
 </body>
 </html>
